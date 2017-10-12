@@ -16,7 +16,7 @@ class Filter:
     def __learn__(self):
         """tell the filter which one are noised"""
 
-        return domains, keys
+        return domains  # including 3 values, (begin, end, key)
 
 
     def __process__(self, domain):
