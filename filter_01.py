@@ -27,4 +27,4 @@ for i in range(20):
         flt.append(False)
     else:
         flt.append(True)
-
+print(flt)
