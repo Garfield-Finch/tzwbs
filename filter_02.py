@@ -9,8 +9,14 @@ def loadDataSet(fileName):
     with open(fileName) as fr:
         for line in fr.readlines():
             lineArr = line.strip().split('\t')
-            dataMat.append([float(lineArr[0]), float(lineArr[1])])
-            labelMat.append(float(lineArr[2]))
+
+            lineBrr = lineArr[0]
+            lineBrr = lineBrr.split()
+            print(type(lineBrr))
+            print(lineBrr)
+
+            dataMat.append([float(lineBrr[0]), float(lineBrr[1])])
+            labelMat.append(float(lineBrr[2]))
     return dataMat, labelMat
 
 def selectJrand(i, m):
