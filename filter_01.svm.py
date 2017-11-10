@@ -18,7 +18,6 @@ class Filter:
         a = a[2:]
         for i in range(len(a)):
             a[i] = eval(a[i][:-1])
-
         self.data = a  # self.data is the list of all numbers
 
         self.noised = noised
@@ -55,7 +54,6 @@ class Filter:
                 target.append(1)    # 1  denoting normal
         my_target = np.array(target)
         print(self.features)
-        print(my_target)
 
         # train, using linear model
         my_clf = svm.LinearSVC()
@@ -78,11 +76,15 @@ class Filter:
 
 if __name__ == '__main__':
 
-    x = Filter("B090512020.txt", [5,6,19,20], [1,2,3,4,7,8,9,10,11,12,13,14,15,16,17,18])
+    x = Filter("my_data.txt", [5,6,19,20,21,22,35,36,37], [1,2,3,4,7,8,9,10,11,12,13,14,15,16,17,18,23,24,25,26,
+                                                           27,28,29,30,31,32,33,34,38,39,40])
     # train
     x.learn()
     print(x.clf.coef_)
 
     # predict
     y = Filter("B090615010.txt")
-    print(x.clf.predict(y.features))
+    result = x.clf.predict(y.features)
+    for i in range(len(result)):
+        if result[i] == -1:
+            print(i+1, end=" ")
